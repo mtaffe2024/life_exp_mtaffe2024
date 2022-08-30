@@ -5,4 +5,20 @@ date: "`r Sys.Date()`"
 output: html_document
 ---
 
-random text
+```{r}
+library(tidyverse)
+library(gapminder)
+```
+```{r}
+data("gapminder_unfiltered")
+```
+```{r}
+gapminder_unfiltered %>% 
+  group_by(year) %>% 
+  filter(lifeExp == max(lifeExp)) %>% 
+  ungroup() %>% 
+  select(year, country, lifeExp) ->
+  sumdat
+```
+
+Comment. This is a comment
